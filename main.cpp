@@ -1,5 +1,7 @@
 using namespace std;
-#include "iostream"
+#include <iostream>
+#include <vector>
+
 
 class state_system{
 public:
@@ -19,9 +21,22 @@ public:
     int array_write_position;
     int array_read_position;
     int delay_num;
-    int dimension_size;
-    int elem_base;
+    int dimension_size = 2;
+    int elem_base = 300;
     int flag;
+
+    void state_system(){
+        this->a = {{0.0,0.0},{0.0,0.0}};
+        this->b = {{0.0,0.0}};
+        this->c = {{0.0,0.0}};
+    }
+    void delay_array_init(int delay_num){
+        this->delay_num = delay_num;
+        this->array_read_position = 0;
+        this->array_write_position = this->delay_num;
+    }
+
+
 }
 
 int main(int argc, char **argv){
