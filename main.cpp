@@ -44,6 +44,23 @@ public:
             this->x[i] = 0.0;
         }
     }
+    void system(){
+        int i;
+        int j;
+
+        for(i = 0;i < DIMENSION;i++){
+            this->x_d[i]=0.0;
+            for(j = 0;j < DIMENSION;j++){
+                this->x_d[i] += this->x[j] * this->a[i][j];
+            }
+            this->x_d[i] += this->_in * this->b[i];
+        }
+        for(i = 0;i < DIMENSION;i++){
+            this->x[i] += this->x_d[i] * this->_t;
+        }
+
+        
+    }
 
 
 }
