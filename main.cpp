@@ -2,30 +2,42 @@ using namespace std;
 #include <iostream>
 #include <vector>
 
-#define DIMENSION 2
-#define MAX_DELAY_UNIT 100000
+const int DIMENSION = 2;
+const int MAX_DELAY_UNIT = 100000;
 
 class state_system{
 public:
     double _in;
     double _out;
-    vector<double> data(DIMENSION,0.0) x_d;
-    vector<double> data(DIMENSION,0.0) x;
-    vector<vector<double>> data(DIMENSION,data(DIMENSION,0.0)) a;
-    vector<double> data(DIMENSION,0.0) b;
-    vector<double> data(DIMENSION,0.0) c;
+    vector<double> x_d;
+    vector<double> x;
+    vector<vector<double>> a;
+    vector<double> b;
+    vector<double> c;
     double _t;
-    vector<vector<int>> data(DIMENSION,data(DIMENSION,1)) flag_a;
-    vector<int> data(DIMENSION,1) flag_b;
-    vector<int> data(DIMENSION,1) flag_c;
+    vector<vector<int>> flag_a;
+    vector<int> flag_b;
+    vector<int> flag_c;
     double dev_min;
-    vector<double> data(MAX_DELAY_UNIT,0.0) mudajikan_array;
+    vector<double> mudajikan_array;
     int array_write_position;
     int array_read_position;
     int delay_num;
     int dimension_size = DIMENSION;
     int elem_base = 300;
     int flag;
+
+
+    state_system(){
+        x_d.resize(DIMENSION);
+        x.resize(DIMENSION);
+        a.resize(DIMENSION);
+        for(size_t i = 0; i < DIMENSION;i++){
+            a[i].resize(DIMENSION);
+        }
+        b.resize(DIMENSION);
+        c.resize(DIMENSION);
+    }
 
     void delay_array_init(int delay_num){
         this->delay_num = delay_num;
@@ -63,9 +75,10 @@ public:
     }
 
 
-}
+};
 
 int main(int argc, char **argv){
+    state_system solver;
     cout << "hello" << endl;
     return 0;    
 }
